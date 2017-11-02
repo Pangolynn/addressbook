@@ -1,0 +1,32 @@
+<div class="list-group">
+	<div class="list-group-item flex-column align-items-start" *ngIf="! isActive">
+		<message-form [(cngMessage)]="message"></message-form>
+
+		<div class="d-flex align-items-center justify-content-between">
+			<p class="mb-0">Email</p>
+			<button type="button" class="btn btn-primary btn-sm" (click)="toggleActive(true)">Edit</button>
+		</div>
+	</div>
+
+	<div class="list-group-item flex-column align-items-start" *ngIf="isActive">
+		<message-form [(cngMessage)]="message"></message-form>
+
+		<form class="" [(cngValidatorForm)]="form" (ngSubmit)="submit()" novalidate>
+			<fieldset class="form-group">
+				<label for="{{ inputEmail.name }}">Name</label>
+				<input class="form-control" id="{{ inputEmail.name }}" name="{{ inputEmail.name }}" type="text" [ngClass]="{
+					'is-invalid' : ! inputEmail.isValid && inputEmail.isDirty && ! inputEmail.isActive
+				}"
+					   [(ngModel)]="inputEmail.value"
+					   [(cngValidatorField)]="inputEmail">
+
+				<div class="invalid-feedback" *ngIf="! inputEmail.isValid && inputEmail.isDirty && ! inputEmail.isActive">
+					{{ inputEmail.errorMessage }}
+				</div>
+			</fieldset>
+
+			<button type="submit" class="btn btn-primary btn-sm" [disabled]="! form.isValid || isLoading">Submit</button>
+			<button class="btn btn-secondary btn-sm float-right" (click)="toggleActive(false)">Close</button>
+		</form>
+	</div>
+</div>

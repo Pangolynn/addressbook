@@ -1,0 +1,10 @@
+<div class="row justify-content-center" *ngIf="cngMessage.show">
+    <div class="col col-lg-12">
+        <div class="alert mt-0 mb-3 {{ cngMessage.type }}">
+            <button type="button" class="close clickable" (click)="toggle()">
+                <span>&times;</span>
+            </button>
+            <span>{{ cngMessage.body }}</span>
+        </div>
+    </div>
+</div>

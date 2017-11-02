@@ -1,0 +1,15 @@
+<div *ngIf="userModel.IsLoggedIn()">
+	<div class="container mt-3" *ngIf="message.show">
+		<div class="row justify-content-center">
+			<div class="col col-lg-12">
+				<div class="alert mt-3 mb-0 {{ message.type }}">
+					<button type="button" class="close clickable" (click)="toggle()">
+						<span>&times;</span>
+					</button>
+					<span>{{ message.body }}</span>
+					<span *ngIf="showEmailConfirm">If you havn't recieved your confirmation email, <strong class="clickable" (click)="emailConfirmSend()">click here</strong> to resend it.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

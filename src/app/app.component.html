@@ -1,0 +1,6 @@
+<nav-top-home *ngIf="! isSignedIn"></nav-top-home>
+<nav-top-signed-in *ngIf="isSignedIn"></nav-top-signed-in>
+
+<message-global></message-global>
+
+<router-outlet></router-outlet>
