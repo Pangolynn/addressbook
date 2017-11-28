@@ -1,3 +1,5 @@
+declare var $: any;
+
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -6,24 +8,30 @@ import { UserModel } from '../../../../models/user/user.classes';
 @Component({
 	selector: 'menu-settings',
 	templateUrl: './menu-settings.component.html',
-	encapsulation: ViewEncapsulation.Emulated,
 	styleUrls: [
-		'./menu-settings.component.css'
+		'./menu-settings.component.css',
+		'../../../../app.component.css'
 	]
 })
 export class MenuSettingsComponent {
 
+	hideMenu: boolean = true;
+
     constructor(
-        private router: Router,
-        private userModel: UserModel
+        private _router: Router,
+        private _userModel: UserModel
     ) {
-	}
+		$(window).click(() => {
+            this.hideMenu = true;
+        });
+    }
+
 
 	// func
 
 	logout() {
-		this.userModel.Logout();
-		this.router.navigate(['/']).catch(() => {});
-	}
+        this._userModel.Logout();
 
+        this._router.navigate(['/']);
+	}
 }

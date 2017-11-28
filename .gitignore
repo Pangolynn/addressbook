@@ -40,8 +40,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# Laravel Environment
-.env.*.php
-.env.php
-.env

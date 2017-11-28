@@ -1,4 +1,4 @@
 export const StorageConfig = {
-	'Name': 'socialarray.co',
-	'Type': 'local'
+    'Name': 'address-book',
+    'Type': 'local'
 };

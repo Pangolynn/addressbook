@@ -1,24 +1,23 @@
 import { Headers, RequestOptions } from '@angular/http';
 
 export function GetHeader(): RequestOptions {
-	let headers: Headers = new Headers({
-		'Content-Type': 'application/x-www-form-urlencoded',
-		'Application': 'socialarray'
-	});
+    const headers: Headers = new Headers({
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Requested-With': 'XMLHttpRequest'
+    });
 
-	return GetRequestOptions(headers);
+    return GetRequestOptions(headers);
 }
 
 export function GetHeaderWithUser(token: string): RequestOptions {
-	let headers: Headers = new Headers({
-		'Content-Type': 'application/x-www-form-urlencoded',
-		'Application': 'socialarray',
-		'Authorization': token
-	});
+    const headers: Headers = new Headers({
+        'Content-Type': 'application/x-www-form-urlencodded',
+        'Authorization': token
+    });
 
-	return GetRequestOptions(headers);
+    return GetRequestOptions(headers);
 }
 
-export function GetRequestOptions(headers: Headers): RequestOptions {
-	return new RequestOptions({ headers: headers });
+export function GetRequestOptions(headers: Headers) {
+    return new RequestOptions({ headers: headers });
 }

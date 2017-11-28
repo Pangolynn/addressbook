@@ -1,9 +1,9 @@
 export interface UserInterface {
-	id: number;
-	name: string;
-	confirmed: boolean;
+    id: string;
+    name: string;
+    confirmed: boolean;
 }
 
 export interface UserTokenInterface {
-	value: string;
+    value: string;
 }

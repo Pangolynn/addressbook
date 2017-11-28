@@ -1,14 +1,14 @@
-import { AppWebAlphaPage } from './app.po';
+import { AddressbookclientPage } from './app.po';
 
-describe('app-web-alpha App', () => {
-  let page: AppWebAlphaPage;
+describe('addressbookclient App', () => {
+  let page: AddressbookclientPage;
 
   beforeEach(() => {
-    page = new AppWebAlphaPage();
+    page = new AddressbookclientPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!!');
   });
 });

@@ -5,13 +5,13 @@ import { XHRBackend, RequestOptions } from '@angular/http';
 import { AuthenticationInterceptor } from './authentication.classes';
 
 export function AuthenticationInterceptorFactory(
-	xhrBackend: XHRBackend,
-	requestOptions: RequestOptions,
-	authenticationInterceptor: AuthenticationInterceptor
+    xhrBackend: XHRBackend,
+    requestOptions: RequestOptions,
+    authenticationInterceptor: AuthenticationInterceptor
 ) {
-	let service = new InterceptorService(xhrBackend, requestOptions);
+    const service = new InterceptorService(xhrBackend, requestOptions);
 
-	service.addInterceptor(authenticationInterceptor);
+    service.addInterceptor(authenticationInterceptor);
 
-	return service;
+    return service;
 }
