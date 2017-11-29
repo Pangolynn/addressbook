@@ -7,12 +7,21 @@ import { DataContactInterface } from 'app/services/api/contact/contact.interface
 import { DataContactNull } from 'app/services/api/contact/contact.variables';
 
 @Component({
-  selector: 'contact-single',
-  templateUrl: './single.component.html',
-  styleUrls: ['./single.component.css']
+  selector: 'contact-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css']
 })
-export class ContactSingleComponent implements OnInit {
-  @Input() contact: DataContactInterface;
+export class ContactEditComponent implements OnInit {
+  private _contact: DataContactInterface;
+
+  @Input()
+  get contact(): DataContactInterface {
+     return this._contact;
+  }
+
+  set contact(data: DataContactInterface) {
+     this._contact = data;
+  }
 
   private id = '';
 
@@ -22,7 +31,6 @@ export class ContactSingleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
   }
 
   _delete() {
@@ -38,6 +46,7 @@ export class ContactSingleComponent implements OnInit {
   }
 
   _submit() {
+    console.log('yay');
     this._contactAPI.PostUpdate(this.id).then(response => {
       const _result: ResultInterface = response.result;
 

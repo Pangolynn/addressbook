@@ -1,33 +1,28 @@
-<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content card">
-            <div class="modal-header card-title">
-                <h5 class="modal-title" id="contactModal">Edit Contact</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body card-block">
-                <form>
-                    <div class="form-group">
-                        <input [(ngModel)]="contact.name" name="contactForm" id="contactName" type="text" class="form-control" placeholder="Name">
+<div *ngIf="contact" class="modal fade" id="contactSingleModal" tabindex="-1" role="dialog" aria-labelledby="contactSingleModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content card">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="singleModal">View Contact</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body card-block">
+                    <div class="card-title">
+                        {{ contact.name }}
                     </div>
-                    <div class="form-group">
-                        <input [(ngModel)]="contact.email" name="contactForm" id="contactEmail" type="email" class="form-control" placeholder="Email">
+                    <div class="card-title">
+                        {{ contact.email }}
                     </div>
-                    <div class="form-group">
-                        <input [(ngModel)]="contact.phone_number" name="contactForm" id="contactPhoneNumber" type="text" class="form-control" placeholder="Phone Number">
+                    <div class="card-title">
+                        {{ contact.phone_number }}
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" >Save changes</button>
+    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
-    </div>
 </div>
-
-
-
-

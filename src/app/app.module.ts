@@ -1,7 +1,7 @@
 import { InterceptorService } from 'ng2-interceptors';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpModule, XHRBackend, RequestOptions } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
@@ -19,8 +19,11 @@ import { UserModel } from './models/user/user.classes';
 import { AppComponent } from './app.component';
 import { ContactArchiveComponent } from './components/contact/archive/archive.component';
 import { ContactSingleComponent } from './components/contact/single/single.component';
+import { ContactEditComponent } from './components/contact/edit/edit.component';
+import { ContactAddComponent } from './components/contact/add/add.component';
 import { NavTopComponent } from './components/_shared/components/nav-top/nav-top.component';
 import { MenuSettingsComponent } from './components/_shared/components/menu-settings/menu-settings.component'
+
 
 // services : core
 import { StorageService } from './services/core/storage/storage.classes';
@@ -37,6 +40,8 @@ import { AuthenticationInterceptor } from './services/interceptors/authenticatio
     AppComponent,
     ContactSingleComponent,
     ContactArchiveComponent,
+    ContactEditComponent,
+    ContactAddComponent,
     NavTopComponent,
     MenuSettingsComponent
   ],
@@ -60,6 +65,9 @@ import { AuthenticationInterceptor } from './services/interceptors/authenticatio
       deps: [XHRBackend, RequestOptions, AuthenticationInterceptor]
     },
     StorageService, UserAPI, UserModel, ContactAPI
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   bootstrap: [AppComponent]
 })

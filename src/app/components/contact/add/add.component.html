@@ -1,0 +1,29 @@
+<div #addModal class="modal fade" id="contactAddModal" tabindex="-1" role="dialog" aria-labelledby="contactAddModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content card">
+            <div class="modal-header card-title">
+                <h5 class="modal-title" id="addModal">Create Contact</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body card-block">
+                <form (ngSubmit)="submit()">
+                    <div class="form-group">
+                        <input [(ngModel)]="contact.name" name="contactName" id="contactName" type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="contact.email" name="contactEmail" id="contactEmail" type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="contact.phone_number" name="contactPhoneNumber" id="contactPhoneNumber" type="text" class="form-control" placeholder="Phone Number">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

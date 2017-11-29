@@ -1,2 +1,5 @@
-.contactName {
-  width: 300px; }
+.addButton {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transform: rotate(90deg); }

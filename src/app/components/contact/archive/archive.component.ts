@@ -13,11 +13,14 @@ import { DataContactNull } from 'app/services/api/contact/contact.variables';
 @Component({
   selector: 'contact-archive',
   templateUrl: './archive.component.html',
-  styleUrls: ['./archive.component.css']
+  styleUrls: [
+    './archive.component.css',
+    '../../../app.component.css'
+  ]
 })
 export class ContactArchiveComponent implements OnInit {
   private contacts: DataContactInterface[];
-  private contact: DataContactInterface;
+  private selectedContact: DataContactInterface;
   private id = '';
 
   constructor(
@@ -26,28 +29,8 @@ export class ContactArchiveComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.getContacts();
    this._get();
   }
-
-  // getContacts() {
-  //   this._userAPI.GetContacts().then(response => {
-
-  //     console.log(response);
-  //     // console.log(Object.keys(this.contacts)[1]);
-
-  //     const _result: ResultInterface = response.result;
-
-  //     if (response.success === true && _result.code === 1) {
-  //       this.contacts = _result.data['contacts'];
-  //       console.log(this.contacts);
-  //     } else {
-  //       this.contacts = DataContactNull;
-  //     }
-  //   }).catch(error => {
-  //     console.log(error);
-  //   });
-  // }
 
   _get() {
     this._contactAPI.GetArchive().then(response => {
@@ -66,7 +49,7 @@ export class ContactArchiveComponent implements OnInit {
     });
   }
 
-  // TODO: DataPrep?
+  // TODO: DataPrep (email,phone null etc)?
 
   _setLastName() {
     this.contacts.forEach(function (c) {
@@ -85,10 +68,10 @@ export class ContactArchiveComponent implements OnInit {
 
   _delete() {
     this._contactAPI.DeleteSingle(this.id).then(response => {
-      let _result: ResultInterface = response.result;
+      const _result: ResultInterface = response.result;
 
       if (response.success === true && _result.code === 1) {
-        this.contact = DataContactNull;
+        this.selectedContact = DataContactNull;
       }
     }).catch(error => {});
   }
@@ -96,55 +79,17 @@ export class ContactArchiveComponent implements OnInit {
   // Param 1: Contact property options: 'name', 'last_name', 'email'
   // Param 2: Directions are 'asc' or 'desc'
   sort(prop: string, dir: string) {
-    // this.contacts.sort((a, b): number => {
-    //   if (a.name < b.name) { return -1; }
-    //   if (a.name > b.name) { return 1; }
-    //   return 0;
-    // });
-
     this.contacts = _.orderBy(this.contacts, [prop], [dir]);
   }
 
-  // sortFirstReverse() {
-  //   this.contacts.sort((a, b): number => {
-  //     if (a.name > b.name) { return -1; }
-  //     if (a.name < b.name) { return 1; }
-  //     return 0;
-  //   });
-  // }
+  onSelect(contact: DataContactInterface) {
+    this.selectedContact = contact;
+    console.log(this.selectedContact);
+  }
 
-  // Parameter options are 'asc' or 'desc'
-  // sortEmail(dir: string) {
-  //   // this.contacts.sort(function (a, b) {
-  //   //   return a.email === null ? -1 : b.email === null ? 1 : a.email.toString().localeCompare(b.email);
-  //   // });
-
-  //   this.contacts = _.orderBy(this.contacts, ['email'], [dir]);
-  // }
-
-  // // sortEmailReverse(direction: string) {
-  // //   this.contacts.sort(function (a, b) {
-  // //     return a.email === null ? 1 : b.email === null ? -1 : a.email.toString().localeCompare(b.email);
-  // //   });
-  // //   console.log('sort email reverse');
-  // // }
-
-  // sortLast(dir: string) {
-  //   // this.contacts.sort((a, b): number => {
-  //   //   if (a.name < b.name) { return -1; }
-  //   //   if (a.name > b.name) { return 1; }
-  //   //   return 0;
-  //   // });
-
-  //   this.contacts = _.orderBy(this.contacts, ['last_name'], [dir]);
-  // }
-
-  // sortLastReverse() {
-  //   // this.contacts.sort((a, b): number => {
-  //   //   if (a.name > b.name) { return -1; }
-  //   //   if (a.name < b.name) { return 1; }
-  //   //   return 0;
-  //   // });
-  // }
+  onAddContact(contact: DataContactInterface) {
+    this.contacts.splice(this.contacts.length - 1, 0, contact);
+    console.log(this.contacts);
+  }
 
 }

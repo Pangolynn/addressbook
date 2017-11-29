@@ -6,5 +6,6 @@ export let DataContactNull: SelfInterface.DataContactInterface = {
     created_at: '',
     updated_at: '',
     email: '',
-    phone_number: ''
+    phone_number: '',
+    last_name: ''
 };
