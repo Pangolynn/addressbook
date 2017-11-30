@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { ContactAPI } from '../../../services/api/contact/contact.classes';
 
@@ -14,6 +14,8 @@ import { DataContactNull } from 'app/services/api/contact/contact.variables';
 export class ContactEditComponent implements OnInit {
   private _contact: DataContactInterface;
 
+  @Output() onDeleteContact = new EventEmitter<DataContactInterface>();
+
   @Input()
   get contact(): DataContactInterface {
      return this._contact;
@@ -23,8 +25,7 @@ export class ContactEditComponent implements OnInit {
      this._contact = data;
   }
 
-  private id = '';
-
+  @ViewChild('closeEditModal') close;
 
   constructor(
     private _contactAPI: ContactAPI
@@ -33,12 +34,15 @@ export class ContactEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  _delete() {
-    this._contactAPI.DeleteSingle(this.id).then(response => {
+  delete() {
+    this._contactAPI.DeleteSingle(this._contact['id']).then(response => {
       const _result: ResultInterface = response.result;
 
       if (response.success === true && _result.code === 1) {
-        this.contact = DataContactNull;
+        this.onDeleteContact.emit();
+        console.log(this.contact);
+        console.log(_result.data['msg']);
+        this.close.nativeElement.click();
       }
     }).catch(error => {
       console.log(error);
@@ -47,13 +51,15 @@ export class ContactEditComponent implements OnInit {
 
   _submit() {
     console.log('yay');
-    this._contactAPI.PostUpdate(this.id).then(response => {
+    console.log(this._contact);
+    this._contactAPI.PutUpdate(this._contact['id'], this._contact).then(response => {
       const _result: ResultInterface = response.result;
 
       if (response.success === true && _result.code === 1) {
-        this.contact = _result.data['contact'];
+        console.log(_result.data['msg']);
+        this.close.nativeElement.click();
       } else {
-
+        console.log(_result.data['msg']);
       }
     }).catch(error => {
       console.log(error);

@@ -1,28 +1,29 @@
 <div *ngIf="contact" class="modal fade" id="contactSingleModal" tabindex="-1" role="dialog" aria-labelledby="contactSingleModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content card">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="singleModal">View Contact</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content card">
+            <div class="modal-header">
+                <h5 class="modal-title" id="singleModal">View Contact</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <div class="modal-body card-block">
+                <div class="card-title">
+                    {{ contact.name }}
                 </div>
-                <div class="modal-body card-block">
-                    <div class="card-title">
-                        {{ contact.name }}
-                    </div>
-                    <div class="card-title">
-                        {{ contact.email }}
-                    </div>
-                    <div class="card-title">
-                        {{ contact.phone_number }}
-                    </div>
-    
+                <div class="card-title">
+                    {{ contact.email }}
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                <div class="card-title">
+                    {{ contact.phone_number }}
                 </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
         </div>
+    </div>
 </div>

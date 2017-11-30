@@ -19,7 +19,8 @@ import { DataContactNull } from 'app/services/api/contact/contact.variables';
 export class ContactAddComponent implements OnInit {
     @Output() onAddContact = new EventEmitter<DataContactInterface>();
 
-    @ViewChild('addModal') addContact;
+    @ViewChild('closeAddModal') close;
+
     private contact: DataContactInterface = DataContactNull;
 
     constructor(
@@ -27,7 +28,7 @@ export class ContactAddComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        console.log(this.addContact);
+        console.log(this.close);
     }
 
     submit() {
@@ -37,8 +38,7 @@ export class ContactAddComponent implements OnInit {
             console.log(_result, response);
             if (response.success === true && _result.code === 1) {
                 this.onAddContact.emit(this.contact);
-                this.addContact.modal();
-                this.addContact.modal('hide');
+                this.close.nativeElement.click();
 
             } else {
                 console.log(_result.data['msg']);

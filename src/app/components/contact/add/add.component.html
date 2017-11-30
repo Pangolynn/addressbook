@@ -1,4 +1,4 @@
-<div #addModal class="modal fade" id="contactAddModal" tabindex="-1" role="dialog" aria-labelledby="contactAddModal" aria-hidden="true">
+<div class="modal fade" id="contactAddModal" tabindex="-1" role="dialog" aria-labelledby="contactAddModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content card">
             <div class="modal-header card-title">
@@ -19,7 +19,7 @@
                         <input [(ngModel)]="contact.phone_number" name="contactPhoneNumber" id="contactPhoneNumber" type="text" class="form-control" placeholder="Phone Number">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button #closeAddModal type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

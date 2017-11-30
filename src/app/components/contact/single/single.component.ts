@@ -14,9 +14,6 @@ import { DataContactNull } from 'app/services/api/contact/contact.variables';
 export class ContactSingleComponent implements OnInit {
   @Input() contact: DataContactInterface;
 
-  private id = '';
-
-
   constructor(
     private _contactAPI: ContactAPI
   ) {}
@@ -26,7 +23,7 @@ export class ContactSingleComponent implements OnInit {
   }
 
   _delete() {
-    this._contactAPI.DeleteSingle(this.id).then(response => {
+    this._contactAPI.DeleteSingle(this.contact['id']).then(response => {
       const _result: ResultInterface = response.result;
 
       if (response.success === true && _result.code === 1) {
@@ -37,18 +34,5 @@ export class ContactSingleComponent implements OnInit {
     });
   }
 
-  _submit() {
-    this._contactAPI.PostUpdate(this.id).then(response => {
-      const _result: ResultInterface = response.result;
-
-      if (response.success === true && _result.code === 1) {
-        this.contact = _result.data['contact'];
-      } else {
-
-      }
-    }).catch(error => {
-      console.log(error);
-    });
-  }
 
 }

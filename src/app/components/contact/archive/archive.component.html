@@ -1,22 +1,31 @@
+<button class="btn btn-primary mt-1 ml-1 sticky-top" data-toggle="modal" data-target="#contactAddModal">Add Contact +</button>
 
 <div class="d-flex flex-column justify-content-around">
-    <div class="d-flex card flex-column align-items-center justify-content-center contactHeading">
-        <h2 class="w-100 text-center mt-5">Contacts</h2>
+    <div class="container mw-100">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center mt-1">Contacts</h2>
+            </div>
+        </div>
 
-        <div class="dropdown align-self-end mr-3">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="sortButton" data-toggle="dropdown">
-                Sort By:
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-                <h6 class="dropdown-header">First Name</h6>
-                <a class="dropdown-item" (click)="sort('name', 'asc')">Alphabetical A-Z</a>
-                <a class="dropdown-item" (click)="sort('name', 'desc')">Reverse Z-A</a>
-                <h6 class="dropdown-header">Last Name</h6>
-                <a class="dropdown-item" (click)="sort('last_name', 'asc')">Alphabetical A-Z</a>
-                <a class="dropdown-item" (click)="sort('last_name', 'desc')">Reverse Z-A</a>
-                <h6 class="dropdown-header">Email Address</h6>
-                <a class="dropdown-item" (click)="sort('email', 'asc')">Alphabetical A-Z</a>
-                <a class="dropdown-item" (click)="sort('email', 'desc')">Reverse Z-A</a>
+        <div class="row">
+            <div class="col d-flex justify-content-end mr-1">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="sortButton" data-toggle="dropdown">
+                        Sort By:
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <h6 class="dropdown-header">First Name</h6>
+                        <a class="dropdown-item" (click)="sort('name', 'asc')">Alphabetical A-Z</a>
+                        <a class="dropdown-item" (click)="sort('name', 'desc')">Reverse Z-A</a>
+                        <h6 class="dropdown-header">Last Name</h6>
+                        <a class="dropdown-item" (click)="sort('last_name', 'asc')">Alphabetical A-Z</a>
+                        <a class="dropdown-item" (click)="sort('last_name', 'desc')">Reverse Z-A</a>
+                        <h6 class="dropdown-header">Email Address</h6>
+                        <a class="dropdown-item" (click)="sort('email', 'asc')">Alphabetical A-Z</a>
+                        <a class="dropdown-item" (click)="sort('email', 'desc')">Reverse Z-A</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -33,7 +42,7 @@
                 <div class="col-sm-4">
                     <p class="align-text-center">{{contact.email}}</p>
                 </div>
-                <div class="col-sm-1 ">
+                <div class="col-sm-1 ml-auto">
                     <!-- Button trigger modal  -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contactEditModal">
                         Edit
@@ -42,12 +51,11 @@
             </div>
         </div>
     </div>
-    <contact-edit [contact]="selectedContact"></contact-edit>
+    
+    <contact-edit [contact]="selectedContact" (onDeleteContact)="onDeleteContact()"></contact-edit>
     <contact-single [contact]="selectedContact"></contact-single>
     <contact-add (onAddContact)="onAddContact($event)"></contact-add>
 </div>
-<div class="addButton mr-5">
-    <button class="btn mr-5 ml-5 2 btn-primary" data-toggle="modal" data-target="#contactAddModal">Add Contact +</button>
-</div>
+
 
 

@@ -87,9 +87,14 @@ export class ContactArchiveComponent implements OnInit {
     console.log(this.selectedContact);
   }
 
+  // event response
   onAddContact(contact: DataContactInterface) {
     this.contacts.splice(this.contacts.length - 1, 0, contact);
     console.log(this.contacts);
+  }
+
+  onDeleteContact() {
+    this._get();
   }
 
 }
